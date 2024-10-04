@@ -11,7 +11,7 @@ classes/
 
 # idea
 
-fabric/.idea/
+.idea/
 *.iml
 *.ipr
 *.iws
@@ -30,7 +30,7 @@ bin/
 
 # fabric
 
-fabric/run/
+run/
 
 # java
 
@@ -38,3 +38,5 @@ hs_err_*.log
 replay_*.log
 *.hprof
 *.jfr
+
+debug.log
