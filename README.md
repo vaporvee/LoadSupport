@@ -1,4 +1,4 @@
-﻿# EnoughMemory
+﻿# Enoug Memory
 A Minecraft mod which displays a warning when too less Java memory was allocated.<br>
 It is fully configurable in `config/enoughmemory.toml`
 ## Directly Shows a warning message
