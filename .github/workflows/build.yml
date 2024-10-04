@@ -28,7 +28,7 @@ jobs:
 
       - name: Build Fabric Mod
         working-directory: ./fabric
-        run: ./gradlew clean build
+        run: ./gradlew build
 
       - name: Capture build artifacts
         if: ${{ matrix.java == '21' }}
