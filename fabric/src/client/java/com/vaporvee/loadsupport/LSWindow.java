@@ -1,9 +1,10 @@
-package com.vaporvee.enoughmemory;
+package com.vaporvee.loadsupport;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.gui.screen.AccessibilityOnboardingScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -14,12 +15,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-public class EMWindow {
+public class LSWindow {
     static boolean windowOpen = false;
     private static JFrame window;
 
     public static void createWindow(MinecraftClient minecraftClient, Screen screen) {
-        if(screen instanceof TitleScreen){
+        if(screen instanceof TitleScreen || screen instanceof AccessibilityOnboardingScreen){
             minecraftClient.setScreen(new BlockedScreen());
             if(window != null){
                 window.dispose();
@@ -30,17 +31,17 @@ public class EMWindow {
             if (!windowOpen) {
                 windowOpen = true;
                 SwingUtilities.invokeLater(() -> {
-                    window = new JFrame(EnoughMemoryClient.getWarningMessage()[0]);
+                    window = new JFrame(LoadSupportClient.getWarningMessage()[0]);
                     window.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
                     window.setSize(400, 200);
                     window.setLocationRelativeTo(null);
 
-                    JLabel message = new JLabel("<html><p style=\"width:200px\">"+EnoughMemoryClient.getWarningMessage()[1]+"</p></html>", JLabel.CENTER);
+                    JLabel message = new JLabel("<html><p style=\"width:200px\">"+ LoadSupportClient.getWarningMessage()[1]+"</p></html>", JLabel.CENTER);
                     JButton exitButton = new JButton("OK");
 
                     exitButton.addActionListener(e -> {
                         window.dispose();
-                        minecraftClient.scheduleStop();
+                        minecraftClient.stop();
                     });
 
                     window.setLayout(new BorderLayout());
@@ -50,10 +51,9 @@ public class EMWindow {
                 });
             }
         } catch (RuntimeException e) {
-            EnoughMemory.logger.error(String.valueOf(e));
+            LoadSupport.logger.error(String.valueOf(e));
         }
     }
-
     @Environment(EnvType.CLIENT)
     public static class BlockedScreen extends Screen {
         protected BlockedScreen() {
@@ -74,8 +74,8 @@ public class EMWindow {
         public void render(DrawContext context, int mouseX, int mouseY, float delta) {
             super.render(context, mouseX, mouseY, delta);
 
-            String title = EnoughMemoryClient.getWarningMessage()[0];
-            String body = EnoughMemoryClient.getWarningMessage()[1];
+            String title = LoadSupportClient.getWarningMessage()[0];
+            String body = LoadSupportClient.getWarningMessage()[1];
 
             int lineHeight = textRenderer.fontHeight + 5;
             int maxTextWidth = width - 40;
@@ -94,6 +94,5 @@ public class EMWindow {
                 context.drawCenteredTextWithShadow(textRenderer, line, width / 2, bodyStartY + (i * lineHeight), 0xffffff);
             }
         }
-
     }
 }
