@@ -1,12 +1,12 @@
 ﻿# Load Support
 Shows when the user has too less Java memory allocated, and plays a sound when the game has loaded.<br>
-It is fully configurable in `config/enoughmemory.toml`.
+It is fully configurable in `config/loadsupport.toml`.
 ## Directly Shows a warning message
 ![image](https://github.com/user-attachments/assets/b571a607-ec88-4032-9996-876637c156c1)
 ## Blocks the title screen
 ![image](https://github.com/user-attachments/assets/e05b52bd-3cf2-4526-826b-db62c8723831)
 ## Config
-The config in `config/enoughmemory.toml` is pretty self explainatory:
+The config in `config/loadsupport.toml` is pretty self explainatory:
 ```toml
 startSound = true
 minMemory = 4.0

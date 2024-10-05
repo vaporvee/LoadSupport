@@ -20,7 +20,7 @@ loom {
 	splitEnvironmentSourceSets()
 
 	mods {
-		"enoughmemory" {
+		"loadsupport" {
 			sourceSet sourceSets.main
 			sourceSet sourceSets.client
 		}
