@@ -3,7 +3,7 @@
   "id": "loadsupport",
   "version": "${version}",
   "name": "Load Support",
-  "description": "Shows when the user has to less Java memory allocated, and plays a sound when the game has loaded.",
+  "description": "Shows when the user has too less Java memory allocated, and plays a sound when the game has loaded.",
   "authors": [
     {
       "name": "vaporvee",

@@ -1,5 +1,5 @@
 ﻿# Load Support
-Shows when the user has to less Java memory allocated, and plays a sound when the game has loaded.<br>
+Shows when the user has too less Java memory allocated, and plays a sound when the game has loaded.<br>
 It is fully configurable in `config/enoughmemory.toml`.
 ## Directly Shows a warning message
 ![image](https://github.com/user-attachments/assets/b571a607-ec88-4032-9996-876637c156c1)
