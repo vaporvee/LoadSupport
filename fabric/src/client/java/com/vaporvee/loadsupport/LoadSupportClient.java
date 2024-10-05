@@ -16,7 +16,8 @@ public class LoadSupportClient implements ClientModInitializer {
 	public void onInitializeClient() {
 		AutoConfig.register(LSConfig.class, Toml4jConfigSerializer::new);
 		config = AutoConfig.getConfigHolder(LSConfig.class).getConfig();
-		allocatedMemoryInGB = Runtime.getRuntime().totalMemory() / 1073741824f; // Hardcoded value for GB
+		allocatedMemoryInGB = Runtime.getRuntime().maxMemory() / 1073741824f; // Hardcoded value for GB
+		allocatedMemoryInGB = Math.round(allocatedMemoryInGB * 10) / 10f;
 		LoadSupport.logger.info(String.format("Allocated Memory: %.1f GB", allocatedMemoryInGB));
 		ScreenEvents.BEFORE_INIT.register(LoadSupportClient::beforeWindowInit);
 	}
@@ -24,7 +25,7 @@ public class LoadSupportClient implements ClientModInitializer {
 	public static String[] getWarningMessage(){
 		return new String[]{config.errorTitle, config.errorDescription
 				.replace("{minMemory}", String.valueOf(config.minMemory))
-				.replace("{currentMemory}", String.format("%.1f", allocatedMemoryInGB))};
+				.replace("{currentMemory}", String.valueOf(allocatedMemoryInGB))};
 	};
 	private static void beforeWindowInit(MinecraftClient minecraftClient, Screen screen, int i, int i1) {
 		if(config.minMemory > allocatedMemoryInGB){
