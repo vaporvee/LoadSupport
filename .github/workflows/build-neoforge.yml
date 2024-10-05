@@ -19,7 +19,5 @@ jobs:
           distribution: "temurin"
 
       - name: Build with Gradle
-        uses: gradle/actions/setup-gradle@v3
         working-directory: ./neoforge
-        with:
-          arguments: build
+        run: ./gradlew build 
