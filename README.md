@@ -21,7 +21,7 @@ The errorDescription does automatic line breaks. `{minMemory}` and `{currentMemo
 ### Directly show a warning when too less Java Memory was selected 🚨
 The player doesn't need to wait just to know that they selected the wrong amount of Java Memory.
 
-![Screenshot](https://cdn.modrinth.com/data/bnO15g6H/images/dfa614eed2075c99c9d1ab3031d73ca9a4b1c59f.png)
+![Screenshot](https://cdn.modrinth.com/data/cached_images/0b148e2023ca586cc64f821a2ce0ca8b87402ce5.png)
 
 #### Blocks the title screen🚧
 Make sure the player gets the correct performance experience.
