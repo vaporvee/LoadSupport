@@ -33,4 +33,4 @@ Make sure the player gets the correct performance experience.
 ### Play a sound when Minecraft finished loading 🔊
 Directly know when Minecraft started when beeing in the background.
 
-Sound used: https://www.youtube-nocookie.com/embed/h2eBoIoq5vw
+Sound used: https://www.youtube.com/watch?v=h2eBoIoq5vw
