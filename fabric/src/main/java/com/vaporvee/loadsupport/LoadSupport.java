@@ -1,23 +1,18 @@
 package com.vaporvee.loadsupport;
 
-import net.fabricmc.api.EnvType;
 import net.fabricmc.api.ModInitializer;
 
-import net.fabricmc.loader.api.FabricLoader;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class LoadSupport implements ModInitializer {
-	public static final String MOD_ID = "loadsupport";
+    
+    @Override
+    public void onInitialize() {
+        
+        // This method is invoked by the Fabric mod loader when it is ready
+        // to load your mod. You can access Fabric and Common code in this
+        // project.
 
-	public static final Logger logger = LoggerFactory.getLogger("Load Support");
-
-	@Override
-	public void onInitialize() {
-		if (FabricLoader.getInstance().getEnvironmentType() == EnvType.SERVER) {
-			logger.info(MOD_ID + " is a client mod only!");
-			return;
-		}
-		logger.info("Loading Load Support mod.");
-	}
+        // Use Fabric to bootstrap the Common mod.
+        Constants.LOG.info("Hello Fabric world!");
+        CommonClass.init();
+    }
 }
