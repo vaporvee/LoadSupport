@@ -3,6 +3,16 @@ plugins {
     id 'net.neoforged.moddev'
 }
 
+repositories {
+    mavenCentral()
+    maven { url "https://maven.shedaniel.me/" }
+}
+
+dependencies {
+    implementation 'com.moandjiezana.toml:toml4j:0.7.2'
+    implementation "me.shedaniel.cloth:cloth-config-neoforge:18.0.145"
+}
+
 neoForge {
     version = neoforge_version
     // Automatically enable neoforge AccessTransformers if the file exists

@@ -1,18 +1,29 @@
 package com.vaporvee.loadsupport;
 
 import com.vaporvee.loadsupport.platform.Services;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.item.Items;
 
 public class CommonClass {
     public static void init() {
-        // Constants.LOG.info("Hello from Common init on {}! we are currently in a {} environment!", Services.PLATFORM.getPlatformName(), Services.PLATFORM.getEnvironmentName());
-        // Constants.LOG.info("The ID for diamonds is {}", BuiltInRegistries.ITEM.getKey(Items.DIAMOND));
-        // if (Services.PLATFORM.isModLoaded("loadsupport"))
         if (Services.PLATFORM.isEnvServer()) {
             Constants.LOG.info(Constants.MOD_ID + " is a client mod only!");
             return;
         }
         Constants.LOG.info("Loading Load Support mod.");
+        Allocated.init();
+        Allocated.printAllocated();
+        Services.CONFIG.InitConfig();
+    }
+    public static void checkConfig(LSConfig config) {
+        Constants.LOG.info("Load config test!");
+        if (config != null) {
+            if(config.minMemory > Allocated.memoryInGB){
+                System.setProperty("java.awt.headless", "false");
+                Constants.LOG.info("Not enough memory! Allocated memory in GB is {} but set in config is {}",
+                        Allocated.memoryInGB, config.minMemory);
+                //create jframe window
+            }
+        } else {
+            Constants.LOG.info("Load config is null!");
+        }
     }
 }

@@ -13,6 +13,6 @@ public class MixinTitleScreen {
     
     @Inject(at = @At("HEAD"), method = "init()V")
     private void init(CallbackInfo info) {
-        Constants.LOG.info("Mixin MC title Type: {}", Minecraft.getInstance().getVersionType());
+
     }
 }
