@@ -1,10 +1,9 @@
 package com.vaporvee.loadsupport;
 
 import me.shedaniel.autoconfig.ConfigData;
-import me.shedaniel.autoconfig.annotation.Config;
 
-@Config(name = Constants.MOD_ID)
-public class LSConfig implements ConfigData {
+@me.shedaniel.autoconfig.annotation.Config(name = Constants.MOD_ID)
+public class Config implements ConfigData {
     boolean startSound = true;
     float minMemory = 4.0f;
     String errorTitle = "Error: Not enough Java memory!";

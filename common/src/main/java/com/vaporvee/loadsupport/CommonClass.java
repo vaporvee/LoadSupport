@@ -13,17 +13,17 @@ public class CommonClass {
         Allocated.printAllocated();
         Services.CONFIG.InitConfig();
     }
-    public static void checkConfig(LSConfig config) {
-        Constants.LOG.info("Load config test!");
+    public static void checkConfig(Config config) {
+        Constants.LOG.info("Config loaded!");
         if (config != null) {
             if(config.minMemory > Allocated.memoryInGB){
                 System.setProperty("java.awt.headless", "false");
-                Constants.LOG.info("Not enough memory! Allocated memory in GB is {} but set in config is {}",
+                Constants.LOG.error("Not enough memory! Allocated memory in GB is {} but set in config is {}",
                         Allocated.memoryInGB, config.minMemory);
-                //create jframe window
+                Allocated.createErrorWindow();
             }
         } else {
-            Constants.LOG.info("Load config is null!");
+            Constants.LOG.warn("Load config is null!");
         }
     }
 }
