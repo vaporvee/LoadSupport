@@ -5,6 +5,7 @@ import com.vaporvee.loadsupport.platform.Services;
 import javax.swing.*;
 import java.awt.*;
 import java.net.URI;
+import java.util.Objects;
 
 public class Allocated {
     public static float memoryInGB;
@@ -48,15 +49,18 @@ public class Allocated {
         try {
             if (enoughMemory) {
                 enoughMemory = false;
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                 SwingUtilities.invokeLater(() -> {
                     String[] warning = getWarningMessage();
                     errorWindow = new JFrame(warning[0]);
+                    Image icon = new ImageIcon(Objects.requireNonNull(Allocated.class.getResource("/assets/" + Constants.MOD_ID + "/icon.png"))).getImage();
+                    errorWindow.setIconImage(icon);
                     errorWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
                     errorWindow.setSize(500, 350);
                     errorWindow.setLocationRelativeTo(null);
 
                     JLabel message = new JLabel(
-                            "<html><p style=\"width:290px; font-size:16px;\">" + warning[1] + "</p></html>",
+                            "<html><p style=\"width:350px; font-size:20px;\">" + warning[1] + "</p></html>",
                             JLabel.CENTER
                     );
 
@@ -88,8 +92,10 @@ public class Allocated {
                     errorWindow.setVisible(true);
                 });
             }
-        } catch (RuntimeException e) {
+        } catch (RuntimeException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
             Constants.LOG.error(String.valueOf(e));
+        } catch (UnsupportedLookAndFeelException e) {
+            throw new RuntimeException(e);
         }
     }
 }
