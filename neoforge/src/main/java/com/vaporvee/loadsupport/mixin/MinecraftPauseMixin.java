@@ -1,0 +1,21 @@
+package com.vaporvee.loadsupport.mixin;
+
+import com.vaporvee.loadsupport.Allocated;
+import net.minecraft.client.Minecraft;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+@Mixin(Minecraft.class)
+public class MinecraftPauseMixin {
+    @Inject(method = "run", at = @At("HEAD"), cancellable = true)
+    private void onRunHead(CallbackInfo ci) {
+        if (!Allocated.enoughMemory) {
+            while (Allocated.isWindowOpen()) {
+                try { Thread.sleep(100); } catch (InterruptedException ignored) {}
+            }
+            ci.cancel();
+        }
+    }
+}

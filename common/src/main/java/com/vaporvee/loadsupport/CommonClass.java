@@ -20,7 +20,7 @@ public class CommonClass {
                 System.setProperty("java.awt.headless", "false");
                 Constants.LOG.error("Not enough memory! Allocated memory in GB is {} but set in config is {}",
                         Allocated.memoryInGB, config.minMemory);
-                Allocated.createErrorWindow();
+                Allocated.createMemoryError();
             }
         } else {
             Constants.LOG.warn("Load config is null!");
