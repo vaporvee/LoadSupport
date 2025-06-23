@@ -5,10 +5,7 @@
   "refmap": "${mod_id}.refmap.json",
   "compatibilityLevel": "JAVA_21",
   "mixins": [],
-  "client": [
-    "MinecraftPauseMixin",
-    "WindowHideMixin"
-  ],
+  "client": [],
   "server": [],
   "injectors": {
     "defaultRequire": 1

@@ -1,6 +1,6 @@
 package com.vaporvee.loadsupport.mixin;
 
-import com.vaporvee.loadsupport.Allocated;
+import com.vaporvee.loadsupport.modules.Allocated;
 import net.minecraft.client.Minecraft;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

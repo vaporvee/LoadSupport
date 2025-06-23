@@ -1,6 +1,10 @@
-package com.vaporvee.loadsupport;
+package com.vaporvee.loadsupport.modules;
 
+import com.vaporvee.loadsupport.CommonClass;
+import com.vaporvee.loadsupport.Config;
+import com.vaporvee.loadsupport.Constants;
 import com.vaporvee.loadsupport.platform.Services;
+import org.lwjgl.glfw.GLFW;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,14 +15,22 @@ public class Allocated {
     public static float memoryInGB;
     public static void init(){
         memoryInGB = Runtime.getRuntime().maxMemory() / Constants.GIGABYTE;
-        memoryInGB = Math.round(Allocated.memoryInGB * 10) / 10f;
-    }
-    public static void printAllocated() {
+        memoryInGB = Math.round(memoryInGB * 10) / 10f;
         Constants.LOG.info(String.format("Allocated Memory: %.1f GB", memoryInGB));
+        checkMemory();
     }
 
-    public static String[] getWarningMessage() {
-        Config config = Services.CONFIG.getConfig();
+    private static void checkMemory(){
+        if(CommonClass.config.minMemory > memoryInGB){
+            System.setProperty("java.awt.headless", "false");
+            Constants.LOG.error("Not enough memory! Allocated memory in GB is {} but set in config is {}",
+                    memoryInGB, CommonClass.config.minMemory);
+            createMemoryError();
+        }
+    }
+
+    private static String[] getWarningMessage() {
+        Config config = CommonClass.config;
 
         String title = stripHtml(config.errorTitle);
         String minMemoryText = stripHtml(config.errorMinMemory);
@@ -38,14 +50,15 @@ public class Allocated {
         return input == null ? "" : input.replaceAll("<[^>]*>", "");
     }
 
-    public static boolean enoughMemory = true;
     private static JFrame errorWindow;
+
+    public static boolean enoughMemory = true;
 
     public static boolean isWindowOpen(){
         return errorWindow.isDisplayable();
     }
 
-    public static void createMemoryError() {
+    private static void createMemoryError() {
         try {
             if (enoughMemory) {
                 enoughMemory = false;
@@ -91,6 +104,9 @@ public class Allocated {
                     errorWindow.add(buttonPanel, BorderLayout.SOUTH);
                     errorWindow.setVisible(true);
                 });
+                if(Objects.equals(Services.PLATFORM.getPlatformName(), "NeoForge")){// NeoForge loads too late so we need to fire it here
+                    CommonClass.HideWindow(); // Hide main Minecraft Window which gets frozen by mixin
+                }
             }
         } catch (RuntimeException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
             Constants.LOG.error(String.valueOf(e));

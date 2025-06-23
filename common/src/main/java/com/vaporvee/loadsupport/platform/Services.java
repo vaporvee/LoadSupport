@@ -1,7 +1,6 @@
 package com.vaporvee.loadsupport.platform;
 
 import com.vaporvee.loadsupport.Constants;
-import com.vaporvee.loadsupport.platform.services.IConfig;
 import com.vaporvee.loadsupport.platform.services.IPlatformHelper;
 
 import java.util.ServiceLoader;
@@ -9,8 +8,6 @@ import java.util.ServiceLoader;
 public class Services {
 
     public static final IPlatformHelper PLATFORM = load(IPlatformHelper.class);
-
-    public static final IConfig CONFIG = load(IConfig.class);
 
     public static <T> T load(Class<T> clazz) {
 

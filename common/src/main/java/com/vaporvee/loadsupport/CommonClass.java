@@ -1,29 +1,30 @@
 package com.vaporvee.loadsupport;
 
+import com.vaporvee.loadsupport.modules.Allocated;
 import com.vaporvee.loadsupport.platform.Services;
+import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
+import org.lwjgl.glfw.GLFW;
 
 public class CommonClass {
-    public static void init() {
+    public static boolean init() {
         if (Services.PLATFORM.isEnvServer()) {
             Constants.LOG.info(Constants.MOD_ID + " is a client mod only!");
-            return;
+            return false;
         }
-        Constants.LOG.info("Loading Load Support mod.");
+        InitConfig();
         Allocated.init();
-        Allocated.printAllocated();
-        Services.CONFIG.InitConfig();
+        return true;
     }
-    public static void checkConfig(Config config) {
-        Constants.LOG.info("Config loaded!");
-        if (config != null) {
-            if(config.minMemory > Allocated.memoryInGB){
-                System.setProperty("java.awt.headless", "false");
-                Constants.LOG.error("Not enough memory! Allocated memory in GB is {} but set in config is {}",
-                        Allocated.memoryInGB, config.minMemory);
-                Allocated.createMemoryError();
-            }
-        } else {
-            Constants.LOG.warn("Load config is null!");
-        }
+    public static Config config;
+    public static long window;
+
+    private static void InitConfig() {
+        AutoConfig.register(Config.class, Toml4jConfigSerializer::new);
+        config = AutoConfig.getConfigHolder(Config.class).getConfig();
+    }
+
+    public static void HideWindow() {
+        GLFW.glfwHideWindow(window);
     }
 }

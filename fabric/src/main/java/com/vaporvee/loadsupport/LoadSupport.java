@@ -6,6 +6,9 @@ public class LoadSupport implements ModInitializer {
     
     @Override
     public void onInitialize() {
-        CommonClass.init();
+        boolean initiated = CommonClass.init();
+        if(initiated) {
+            ClientScreenHandler.register();
+        }
     }
 }

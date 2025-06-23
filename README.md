@@ -8,9 +8,11 @@ The config in `config/loadsupport.toml` is pretty self explainatory:
 startSound = true
 minMemory = 4.0
 errorTitle = "Error: Not enough Java memory!"
-errorDescription = "Please allocate at least {minMemory} GB of Java memory to your Minecraft Instance! You have currently {currentMemory} GB allocated."
+errorMinMemory = "Please allocate at least {minMemory} GB of Java memory to your Minecraft instance!"
+errorCurrentMemory = "You have currently {currentMemory} GB allocated."
+memoryInfoLink = "https://github.com/vaporvee/LoadSupport/wiki/How-to-allocate-more-memory-to-your-Minecraft-instance"
 ```
-The errorDescription does automatic line breaks. `{minMemory}` and `{currentMemory}` get replaced by their actual values.
+`{minMemory}` and `{currentMemory}` get replaced by their actual values.
 
 ## Planned Features 👀
 - 🔊 Customizable startup sound
@@ -23,10 +25,8 @@ The player doesn't need to wait just to know that they selected the wrong amount
 
 ![Screenshot](https://cdn.modrinth.com/data/cached_images/0b148e2023ca586cc64f821a2ce0ca8b87402ce5.png)
 
-#### Blocks the title screen🚧
+#### Blocks the game window🚧
 Make sure the player gets the correct performance experience.
-
-<img src="https://cdn.modrinth.com/data/bnO15g6H/images/881f15c2413795ba1ba0bebd2baf4c0f4862336c.png" width="600px">
 
 ---
 

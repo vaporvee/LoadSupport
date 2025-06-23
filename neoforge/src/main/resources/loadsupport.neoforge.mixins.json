@@ -4,10 +4,7 @@
   "package": "com.vaporvee.loadsupport.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [],
-  "client": [
-    "MinecraftPauseMixin",
-    "WindowHideMixin"
-  ],
+  "client": [],
   "server": [],
   "injectors": {
     "defaultRequire": 1
