@@ -6,8 +6,7 @@
   "compatibilityLevel": "JAVA_18",
   "mixins": [],
   "client": [
-    "MinecraftPauseMixin",
-    "WindowHideMixin"
+    "MinecraftUnloadMixin"
   ],
   "server": [],
   "injectors": {

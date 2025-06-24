@@ -17,14 +17,9 @@ public class CommonClass {
         return true;
     }
     public static Config config;
-    public static long window;
 
     private static void InitConfig() {
         AutoConfig.register(Config.class, Toml4jConfigSerializer::new);
         config = AutoConfig.getConfigHolder(Config.class).getConfig();
-    }
-
-    public static void HideWindow() {
-        GLFW.glfwHideWindow(window);
     }
 }

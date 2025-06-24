@@ -5,7 +5,7 @@ It is fully configurable in `config/loadsupport.toml`.
 ## Config 🚀
 The config in `config/loadsupport.toml` is pretty self explainatory:
 ```toml
-startSound = true
+loadFinishSound = "minecraft:ui.toast.challenge_complete"
 minMemory = 4.0
 errorTitle = "Error: Not enough Java memory!"
 errorMinMemory = "Please allocate at least {minMemory} GB of Java memory to your Minecraft instance!"
@@ -15,7 +15,6 @@ memoryInfoLink = "https://github.com/vaporvee/LoadSupport/wiki/How-to-allocate-m
 `{minMemory}` and `{currentMemory}` get replaced by their actual values.
 
 ## Planned Features 👀
-- 🔊 Customizable startup sound
 - 🪛 Ingame settings (Modlist support)
 - 🧩 More features letting the player know why Minecraft is not loading
 

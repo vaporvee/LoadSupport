@@ -104,9 +104,6 @@ public class Allocated {
                     errorWindow.add(buttonPanel, BorderLayout.SOUTH);
                     errorWindow.setVisible(true);
                 });
-                if(Objects.equals(Services.PLATFORM.getPlatformName(), "NeoForge")){// NeoForge loads too late so we need to fire it here
-                    CommonClass.HideWindow(); // Hide main Minecraft Window which gets frozen by mixin
-                }
             }
         } catch (RuntimeException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
             Constants.LOG.error(String.valueOf(e));
