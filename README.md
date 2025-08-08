@@ -2,6 +2,10 @@
 Shows when the player has **too less Java memory** allocated, and **plays a sound** when the game has finished loading.<br>
 It is fully configurable in `config/loadsupport.toml`.
 
+### CurseForge
+I will never release this mod on Curseforge but you can do Modpacks wherever you like with this mod.
+This mod is free and open source and i didn't create Minecraft so just use it how you like.
+
 ## Config 🚀
 The config in `config/loadsupport.toml` is pretty self explainatory:
 ```toml
@@ -33,3 +37,4 @@ Make sure the player gets the correct performance experience.
 Directly know when Minecraft started when beeing in the background.
 
 Sound used: https://www.youtube.com/watch?v=h2eBoIoq5vw
+
