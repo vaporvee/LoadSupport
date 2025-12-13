@@ -1,4 +1,4 @@
-# [Transfered to git.vaporvee.com/vaporvee/LoadSupport](https://git.vaporvee.com/vaporvee/LoadSupport)
+# [Transfered to codeberg.org/vaporvee/LoadSupport](https://codeberg.org/vaporvee/LoadSupport)
 # Load Support
 Shows when the player has **too less Java memory** allocated, and **plays a sound** when the game has finished loading.<br>
 It is fully configurable in `config/loadsupport.toml`.
@@ -38,5 +38,6 @@ Make sure the player gets the correct performance experience.
 Directly know when Minecraft started when beeing in the background.
 
 Sound used: https://www.youtube.com/watch?v=h2eBoIoq5vw
+
 
 
